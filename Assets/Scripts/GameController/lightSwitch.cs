@@ -11,6 +11,7 @@ public class lightSwitch : MonoBehaviour
         {
             Debug.Log("LIGHTS");
             GameController.toggleLights();
+            TaroController.controller.currentCheckpoint = transform;
         }
     }
 }

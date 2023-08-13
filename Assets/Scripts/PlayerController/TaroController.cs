@@ -3,16 +3,14 @@ using System.Linq;
 using UnityEngine;
 
 namespace PlayerSupportLibrary {
-    /// <summary>
-    /// Hey!
-    /// Tarodev here. I built this controller as there was a severe lack of quality & free 2D controllers out there.
-    /// Right now it only contains movement and jumping, but it should be pretty easy to expand... I may even do it myself
-    /// if there's enough interest. You can play and compete for best times here: https://tarodev.itch.io/
-    /// If you hve any questions or would like to brag about your score, come to discord: https://discord.gg/GqeHHnhHpz
-    /// </summary>
     public class TaroController : MonoBehaviour {
         // Public for external hooks
         public static TaroController controller;
+        public Transform currentCheckpoint;
+        private Vector3 startSpawn;
+
+
+
         public Vector3 Velocity { get; private set; }
         public FrameInput Input { get; private set; }
         public bool JumpingThisFrame { get; private set; }
@@ -25,10 +23,13 @@ namespace PlayerSupportLibrary {
 
         // This is horrible, but for some reason colliders are not fully established when update starts...
         private bool _active;
+        private Animator anim;
 
         void Awake()
         {
+            startSpawn = transform.position;
             controller = this;
+            anim = GetComponent<Animator>();
             Invoke(nameof(Activate), 0.5f);
         }
         void Activate() =>  _active = true; 
@@ -271,6 +272,27 @@ namespace PlayerSupportLibrary {
             var move = RawMovement * Time.deltaTime;
             var furthestPoint = pos + move;
 
+            if (move == Vector3.zero)
+            {
+                anim.SetBool("GroundedMoving", false);
+            }
+            else
+            {
+                anim.SetBool("GroundedMoving", true);
+                if (RawMovement.x < 0)
+                {
+                    var local = transform.localScale;
+                    local.x = -8;
+                    transform.localScale = local;
+                }
+                else
+                {
+                    var local = transform.localScale;
+                    local.x = 8;
+                    transform.localScale = local;
+                }
+            }
+
             // check furthest movement. If nothing hit, move and don't do extra checks
             var hit = Physics2D.OverlapBox(furthestPoint, _characterBounds.size, 0, _groundLayer);
             if (!hit) {
@@ -302,6 +324,18 @@ namespace PlayerSupportLibrary {
             }
         }
 
+        #endregion
+
+        #region PlayerDead
+        public void playerDead()
+        {
+            if (currentCheckpoint != null)
+            transform.position = currentCheckpoint.position;
+            else
+            {
+                transform.position = startSpawn;
+            }
+        }
         #endregion
     }
 }
