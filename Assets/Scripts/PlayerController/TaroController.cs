@@ -49,6 +49,8 @@ namespace PlayerSupportLibrary {
             CalculateJump(); // Possibly overrides vertical
 
             MoveCharacter(); // Actually perform the axis movement
+
+            anim.SetBool("isGrounded", Grounded);
         }
 
 
@@ -242,6 +244,7 @@ namespace PlayerSupportLibrary {
                 _coyoteUsable = false;
                 _timeLeftGrounded = float.MinValue;
                 JumpingThisFrame = true;
+                anim.SetTrigger("PlayerJump");
             }
             else {
                 JumpingThisFrame = false;
