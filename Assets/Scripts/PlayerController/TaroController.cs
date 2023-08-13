@@ -12,6 +12,7 @@ namespace PlayerSupportLibrary {
     /// </summary>
     public class TaroController : MonoBehaviour {
         // Public for external hooks
+        public static TaroController controller;
         public Vector3 Velocity { get; private set; }
         public FrameInput Input { get; private set; }
         public bool JumpingThisFrame { get; private set; }
@@ -25,8 +26,12 @@ namespace PlayerSupportLibrary {
         // This is horrible, but for some reason colliders are not fully established when update starts...
         private bool _active;
 
-        void Awake() => Invoke(nameof(Activate), 0.5f);
-        void Activate() =>  _active = true;
+        void Awake()
+        {
+            controller = this;
+            Invoke(nameof(Activate), 0.5f);
+        }
+        void Activate() =>  _active = true; 
         
         private void Update() {
             if(!_active) return;

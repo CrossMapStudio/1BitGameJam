@@ -7,6 +7,7 @@ using System.Linq;
 public class PlayerController : MonoBehaviour
 {
     //State Controller
+    public static PlayerController controller;
     internal StateMachine stateMachine { get; private set; }
     //Set in Editor
     public playerParameters parameters;
