@@ -27,6 +27,9 @@ namespace PlayerSupportLibrary {
         private bool _active;
         public Animator anim;
 
+        private float fallingDeathTimeTarget = 3f;
+        private float fallingDeathTimeCurrent = 0f;
+
         void Awake()
         {
             startSpawn = transform.position;
@@ -52,6 +55,20 @@ namespace PlayerSupportLibrary {
             MoveCharacter(); // Actually perform the axis movement
 
             anim.SetBool("isGrounded", Grounded);
+
+            if (!Grounded)
+            {
+                fallingDeathTimeCurrent += Time.deltaTime;
+                if (fallingDeathTimeCurrent >= fallingDeathTimeTarget)
+                {
+                    playerDead();
+                    fallingDeathTimeCurrent = 0f;
+                }
+            }
+            else if (fallingDeathTimeCurrent != 0f)
+            {
+                fallingDeathTimeCurrent = 0f;
+            }
         }
 
 

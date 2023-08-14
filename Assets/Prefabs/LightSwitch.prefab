@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4150522457331668480}
   - component: {fileID: 9219619401047852687}
   - component: {fileID: 3416836331666129091}
+  - component: {fileID: 2634123695947980542}
   m_Layer: 0
   m_Name: LightSwitch
   m_TagString: Untagged
@@ -141,5 +142,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d75639a537681f4f90c5969ed6fc5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2634123695947980542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602173343911158663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0fb28a254a17644b5892ef9fb8d365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
