@@ -15,11 +15,11 @@ public class coinController : MonoBehaviour
     {
         if (Vector3.Distance(TaroController.controller.transform.position, transform.position) <= 3f)
         {
-            transform.position = Vector3.Lerp(transform.position, TaroController.controller.transform.position, Time.deltaTime * 2f);
+            transform.position = Vector3.Lerp(transform.position, TaroController.controller.transform.position, Time.deltaTime * .2f);
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * 2f);
+            transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * .2f);
         }
     }
 

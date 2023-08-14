@@ -323,13 +323,13 @@ namespace PlayerSupportLibrary {
                 if (RawMovement.x < 0)
                 {
                     var local = transform.localScale;
-                    local.x = -8;
+                    local.x = -1;
                     transform.localScale = local;
                 }
                 else
                 {
                     var local = transform.localScale;
-                    local.x = 8;
+                    local.x = 1;
                     transform.localScale = local;
                 }
             }
