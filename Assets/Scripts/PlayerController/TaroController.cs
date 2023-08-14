@@ -9,7 +9,9 @@ namespace PlayerSupportLibrary {
         public Transform currentCheckpoint;
         private Vector3 startSpawn;
 
-
+        [SerializeField] private SpriteRenderer renderer;
+        [SerializeField] private Cinemachine.CinemachineVirtualCamera camera;
+        [SerializeField] private ParticleSystem deathEffectLight, deathEffectDark;
 
         public Vector3 Velocity { get; private set; }
         public FrameInput Input { get; private set; }
@@ -331,12 +333,44 @@ namespace PlayerSupportLibrary {
         #region PlayerDead
         public void playerDead()
         {
+            renderer.enabled = false;
+            /*
             if (currentCheckpoint != null)
             transform.position = currentCheckpoint.position;
             else
             {
                 transform.position = startSpawn;
             }
+            */
+
+            var clone = new ParticleSystem();
+            if (GameController.LightsOn)
+            {
+                clone = Instantiate(deathEffectDark, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                clone = Instantiate(deathEffectLight, transform.position, Quaternion.identity);
+            }
+            Destroy(clone, 1f);
+            camera.m_Follow = clone.transform;
+            cameraController.controller.cameraShakeStart(.8f, 2f, 2f, true);
+
+            StartCoroutine(respawnPlayer());
+        }
+
+        public System.Collections.IEnumerator respawnPlayer()
+        {
+            yield return new WaitForSecondsRealtime(.8f);
+            renderer.enabled = true;
+            if (currentCheckpoint != null)
+                transform.position = currentCheckpoint.position;
+            else
+            {
+                transform.position = startSpawn;
+            }
+
+            camera.m_Follow = transform;
         }
         #endregion
     }

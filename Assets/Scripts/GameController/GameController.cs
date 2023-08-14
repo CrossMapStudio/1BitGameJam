@@ -38,12 +38,10 @@ public class GameController : MonoBehaviour
         if (LightsOn)
         {
             Camera.main.backgroundColor = Color.white;
-            playerColorController.renderer.color = Color.black;
         }
         else
         {
             Camera.main.backgroundColor = Color.black;
-            playerColorController.renderer.color = Color.white;
         }
 
         toggleObjects();
