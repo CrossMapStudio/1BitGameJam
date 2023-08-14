@@ -12,6 +12,7 @@ namespace PlayerSupportLibrary {
         [SerializeField] private SpriteRenderer renderer;
         [SerializeField] private Cinemachine.CinemachineVirtualCamera camera;
         [SerializeField] private ParticleSystem deathEffectLight, deathEffectDark;
+        [SerializeField] private Collider2D playerCollider;
 
         public Vector3 Velocity { get; private set; }
         public FrameInput Input { get; private set; }
@@ -27,7 +28,7 @@ namespace PlayerSupportLibrary {
         private bool _active;
         public Animator anim;
 
-        private float fallingDeathTimeTarget = 3f;
+        private float fallingDeathTimeTarget = 1.8f;
         private float fallingDeathTimeCurrent = 0f;
 
         void Awake()
@@ -58,6 +59,7 @@ namespace PlayerSupportLibrary {
 
             if (!Grounded)
             {
+                transform.parent = null;
                 fallingDeathTimeCurrent += Time.deltaTime;
                 if (fallingDeathTimeCurrent >= fallingDeathTimeTarget)
                 {
@@ -122,7 +124,25 @@ namespace PlayerSupportLibrary {
             _colRight = RunDetection(_raysRight);
 
             bool RunDetection(RayRange range) {
-                return EvaluateRayPositions(range).Any(point => Physics2D.Raycast(point, range.Dir, _detectionRayLength, _groundLayer));
+                return EvaluateRayPositions(range).Any(point => {
+                    RaycastHit2D ray = Physics2D.Raycast(point, range.Dir, _detectionRayLength, _groundLayer);
+
+                    if (ray.collider != null)
+                    {
+                        toggleObject obj;
+
+                        if (ray.collider.TryGetComponent<toggleObject>(out obj))
+                        {
+                            if (obj != null && obj.isMovingPlatform)
+                                transform.parent = ray.collider.transform;
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                });
             }
         }
 
@@ -373,6 +393,7 @@ namespace PlayerSupportLibrary {
             camera.m_Follow = clone.transform;
             cameraController.controller.cameraShakeStart(.8f, 2f, 2f, true);
 
+            playerCollider.enabled = false;
             StartCoroutine(respawnPlayer());
         }
 
@@ -388,6 +409,7 @@ namespace PlayerSupportLibrary {
             }
 
             camera.m_Follow = transform;
+            playerCollider.enabled = true;
         }
         #endregion
     }

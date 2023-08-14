@@ -6,7 +6,7 @@ public class toggleObject : MonoBehaviour
 {
     public bool darkPlatform;
     internal Collider2D coll;
-
+    public bool isMovingPlatform;
 
     public void Start()
     {
