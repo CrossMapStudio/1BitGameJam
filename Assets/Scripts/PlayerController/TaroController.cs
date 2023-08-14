@@ -23,13 +23,12 @@ namespace PlayerSupportLibrary {
 
         // This is horrible, but for some reason colliders are not fully established when update starts...
         private bool _active;
-        private Animator anim;
+        public Animator anim;
 
         void Awake()
         {
             startSpawn = transform.position;
             controller = this;
-            anim = GetComponent<Animator>();
             Invoke(nameof(Activate), 0.5f);
         }
         void Activate() =>  _active = true; 
