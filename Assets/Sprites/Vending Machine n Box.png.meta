@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -147,8 +147,8 @@ TextureImporter:
       name: Vending Machine n Box_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 254
+        x: 172
+        y: 426
         width: 86
         height: 86
       alignment: 0
@@ -168,8 +168,8 @@ TextureImporter:
       name: Vending Machine n Box_2
       rect:
         serializedVersion: 2
-        x: 86
-        y: 254
+        x: 258
+        y: 426
         width: 86
         height: 86
       alignment: 0
@@ -189,8 +189,8 @@ TextureImporter:
       name: Vending Machine n Box_3
       rect:
         serializedVersion: 2
-        x: 172
-        y: 254
+        x: 344
+        y: 426
         width: 86
         height: 86
       alignment: 0
@@ -210,8 +210,8 @@ TextureImporter:
       name: Vending Machine n Box_4
       rect:
         serializedVersion: 2
-        x: 258
-        y: 254
+        x: 172
+        y: 340
         width: 86
         height: 86
       alignment: 0
@@ -231,7 +231,7 @@ TextureImporter:
       name: Vending Machine n Box_5
       rect:
         serializedVersion: 2
-        x: 344
+        x: 0
         y: 254
         width: 86
         height: 86
@@ -244,6 +244,111 @@ TextureImporter:
       bones: []
       spriteID: 8c773e0ff8ece9541b70714c19d09fed
       internalID: -119357101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vending Machine n Box_6
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 254
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2d0a89ccd107f14fba523b8e1f46340
+      internalID: -122940714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vending Machine n Box_7
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 254
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44aa7be37efa89148909c454cda6f126
+      internalID: 1795345919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vending Machine n Box_8
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 254
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1347fbba073e73743957ee706265cd57
+      internalID: 1332942548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vending Machine n Box_9
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 254
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 256b6dca05e2eb249b98f7968852e577
+      internalID: -707373817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vending Machine n Box_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 82
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3be35f2cbcff6c44bb995f8fbd3d326
+      internalID: 140220817
       vertices: []
       indices: 
       edges: []
@@ -261,10 +366,15 @@ TextureImporter:
     nameFileIdTable:
       Vending Machine n Box_0: 1085413116
       Vending Machine n Box_1: -2114625214
+      Vending Machine n Box_10: 140220817
       Vending Machine n Box_2: 1229441203
       Vending Machine n Box_3: -1067446295
       Vending Machine n Box_4: -152527076
       Vending Machine n Box_5: -119357101
+      Vending Machine n Box_6: -122940714
+      Vending Machine n Box_7: 1795345919
+      Vending Machine n Box_8: 1332942548
+      Vending Machine n Box_9: -707373817
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
