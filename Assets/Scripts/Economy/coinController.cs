@@ -13,13 +13,13 @@ public class coinController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(TaroController.controller.transform.position, transform.position) <= 3f)
+        if (Vector3.Distance(TaroController.controller.transform.position, transform.position) <= 1.5f)
         {
-            transform.position = Vector3.Lerp(transform.position, TaroController.controller.transform.position, Time.deltaTime * .2f);
+            transform.position = Vector3.Lerp(transform.position, TaroController.controller.transform.position, Time.deltaTime * .8f);
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * .2f);
+            transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * .8f);
         }
     }
 

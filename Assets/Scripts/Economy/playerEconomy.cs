@@ -18,6 +18,7 @@ public class playerEconomy : MonoBehaviour
     public void addCoin()
     {
         coins++;
-        coinCollection.text = coins.ToString();
+        if (coinCollection != null)
+            coinCollection.text = coins.ToString();
     }
 }
